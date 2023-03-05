@@ -34,6 +34,7 @@ $ yarn run start:prod
 
 ## Enpoints
 
+All Endpoints are protected by header "Authorization", example: { "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
 Default user:
 email: wordlw@gmail.com
 all passwords: Password123
