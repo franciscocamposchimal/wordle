@@ -1,6 +1,7 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+*This is a game to try to guess the hidden word
+*This repository works with nodeJs +18.10 and PostgresQl database and NestJs framework
 
 ## Installation
 
@@ -8,9 +9,19 @@
 $ yarn install
 ```
 
+## Environment Variables
+
+Clone the env.copy file and remove the word "copy", then add your own values.
+
 ## Running the app
 
 ```bash
+# run migrations
+$ yarn migration:run
+
+# seeder database
+$ yarn seed:run
+
 # development
 $ yarn run start
 
@@ -21,29 +32,39 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-## Test
+## Enpoints
+
+Default user:
+email: wordlw@gmail.com
+all passwords: Password123
 
 ```bash
-# unit tests
-$ yarn run test
+# login
+# METHOD: POST
+http://localhost:3030/v1/auth/login
+body: {
+    "email": "wordlw@gmail.com",
+    "password": "Password123"
+}
 
-# e2e tests
-$ yarn run test:e2e
+# Game init or new game
+# METHOD: Get
+http://localhost:3030/v1/game/init
 
-# test coverage
-$ yarn run test:cov
+# Attempt guess word
+# METHOD: Post
+http://localhost:3030/v1/game/init
+body: { "userWord": "goleá" }
+
+# Get statistics of user logged
+# METHOD: Get
+http://localhost:3030/v1/players/me
+
+# Get statistics of first top 10 users
+# METHOD: Get
+http://localhost:3030/v1/players/top
+
+# Get statistics of first top 10 words
+# METHOD: Get
+http://localhost:3030/v1/players/top-words
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
